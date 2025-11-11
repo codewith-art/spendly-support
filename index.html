@@ -1,16 +1,358 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Spendly Support</title>
+  <meta name="description" content="Help, contact, FAQ, privacy policy, and terms of service for Spendly." />
+  <style>
+    :root{
+      --bg: #0b0f1a;
+      --card: #101828;
+      --muted: #98a2b3;
+      --text: #e5e7eb;
+      --brand: #4f46e5;
+      --brand-2: #22d3ee;
+      --border: #1f2937;
+      --success: #10b981;
+      --danger: #ef4444;
+      --radius: 16px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:radial-gradient(1200px 600px at 80% -10%,rgba(79,70,229,.35),transparent),radial-gradient(900px 400px at -10% 0,rgba(34,211,238,.25),transparent),var(--bg);color:var(--text)}
+    a{color:inherit}
+    .container{max-width:1040px;margin:0 auto;padding:24px}
+    header{position:sticky;top:0;background:linear-gradient(180deg,rgba(11,15,26,.9),rgba(11,15,26,.7));backdrop-filter:saturate(120%) blur(6px);border-bottom:1px solid var(--border);z-index:50}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+    .logo{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--brand-2));box-shadow:0 10px 22px rgba(79,70,229,.35)}
+    .brand span{font-weight:700}
+    .nav a.link{padding:10px 12px;border-radius:10px;text-decoration:none;color:var(--muted)}
+    .nav a.link.active,.nav a.link:hover{color:var(--text)}
+
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;padding:40px 0}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.0)),var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .card.pad{padding:28px}
+    h1{font-size: clamp(28px, 4vw, 44px);line-height:1.1;margin:0 0 10px}
+    h2{font-size: clamp(20px, 2.6vw, 28px);line-height:1.2;margin:18px 0}
+    p.lead{color:var(--muted);margin:0 0 18px}
+    .kpis{display:flex;gap:16px;flex-wrap:wrap}
+    .kpi{flex:1;min-width:180px;padding:16px;border:1px dashed var(--border);border-radius:12px}
+
+    .grid{display:grid;gap:20px}
+    .grid.two{grid-template-columns:1fr 1fr}
+    .grid.three{grid-template-columns:repeat(3,1fr)}
+    @media (max-width:900px){.hero{grid-template-columns:1fr}.grid.two,.grid.three{grid-template-columns:1fr}}
+
+    .btn{display:inline-flex;align-items:center;gap:8px;border:none;border-radius:12px;padding:12px 16px;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;font-weight:600;cursor:pointer;text-decoration:none}
+    .btn.ghost{background:transparent;border:1px solid var(--border);color:var(--text)}
+
+    /* Accordion */
+    details{border:1px solid var(--border);border-radius:12px;padding:12px 16px;background:rgba(255,255,255,.02)}
+    details+details{margin-top:12px}
+    summary{cursor:pointer;font-weight:600}
+
+    /* Form */
+    form{display:grid;gap:12px}
+    label{font-weight:600}
+    input,textarea{width:100%;padding:12px 14px;border:1px solid var(--border);border-radius:12px;background:#0b1220;color:var(--text)}
+    textarea{min-height:120px;resize:vertical}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    @media (max-width:660px){.row{grid-template-columns:1fr}}
+    .hint{color:var(--muted);font-size:14px}
+    .success,.error{display:none;margin-top:10px;padding:10px;border-radius:10px}
+    .success{background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.5)}
+    .error{background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.5)}
+
+    footer{margin-top:40px;border-top:1px solid var(--border);padding:24px 0;color:var(--muted)}
+    footer .links{display:flex;gap:14px;flex-wrap:wrap}
+
+    /* Routed sections */
+    .page{display:none}
+    .page.active{display:block}
+    .prose h1,.prose h2,.prose h3{margin:14px 0}
+    .prose p{margin:8px 0}
+    .prose ul{padding-left:18px}
+    .muted{color:var(--muted)}
+  </style>
 </head>
 <body>
-  <h1>Spendly Support</h1>
-  <p>Contact us at <a href="mailto:support@yourdomain.com">support@yourdomain.com</a></p>
-  <p>We usually respond within 1–2 business days.</p>
-  <h2>FAQ</h2>
-  <ul>
-    <li>How do I restore purchases? → Open app → Settings → Restore Purchases</li>
-    <li>How do I upgrade to Premium? → Open app → Settings → Premium</li>
-  </ul>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#/">
+        <div class="logo" aria-hidden="true"></div>
+        <span>Spendly Support</span>
+      </a>
+      <nav>
+        <a class="link" data-nav href="#/">Home</a>
+        <a class="link" data-nav href="#/faq">FAQ</a>
+        <a class="link" data-nav href="#/contact">Contact</a>
+        <a class="link" data-nav href="#/privacy">Privacy</a>
+        <a class="link" data-nav href="#/terms">Terms</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HOME -->
+    <section id="page-home" class="page active">
+      <div class="hero">
+        <section class="card pad">
+          <h1>How can we help?</h1>
+          <p class="lead">Quick answers for receipts, scanning, Premium, and account help. If you don’t find it here, send us a message and we’ll respond within 1–2 business days.</p>
+          <div class="kpis">
+            <div class="kpi"><strong>Restore Purchases</strong><br/><span class="muted">Open app → Settings → Restore Purchases</span></div>
+            <div class="kpi"><strong>Upgrade to Premium</strong><br/><span class="muted">Open app → Settings → Premium</span></div>
+            <div class="kpi"><strong>Contact</strong><br/><span class="muted"><a href="mailto:support@yourdomain.com">support@yourdomain.com</a></span></div>
+          </div>
+          <div style="margin-top:16px;display:flex;gap:12px;flex-wrap:wrap">
+            <a class="btn" href="#/contact">Contact Support</a>
+            <a class="btn ghost" href="#/faq">View FAQs</a>
+          </div>
+        </section>
+        <aside class="card pad">
+          <h2>Top Links</h2>
+          <ul>
+            <li><a href="#/privacy">Privacy Policy</a></li>
+            <li><a href="#/terms">Terms of Service</a></li>
+            <li><a href="#/faq">Receipt scanning tips</a></li>
+          </ul>
+          <h2>Features</h2>
+          <ul>
+            <li>On‑device extraction (optional cloud)</li>
+            <li>iCloud sync (optional)</li>
+            <li>Business workspaces</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="page-faq" class="page">
+      <div class="grid two">
+        <div class="card pad">
+          <h2>FAQs</h2>
+          <details open>
+            <summary>How do I restore purchases?</summary>
+            <p>Open the app → <strong>Settings → Restore Purchases</strong>. Make sure you’re signed in with the same Apple ID used for purchase.</p>
+          </details>
+          <details>
+            <summary>How do I upgrade to SpendlyGo Premium?</summary>
+            <p>Open the app → <strong>Settings → Premium</strong> to view plans and subscribe via Apple.</p>
+          </details>
+          <details>
+            <summary>Where is my data stored?</summary>
+            <p>By default, data stays on your device. You can enable iCloud sync or Business workspace per your preference.</p>
+          </details>
+          <details>
+            <summary>How do I export or delete my data?</summary>
+            <p>In the app, go to <strong>Settings → Data Tools</strong> to export or delete.</p>
+          </details>
+        </div>
+        <div class="card pad">
+          <h2>Contact</h2>
+          <p class="lead">We usually reply within 1–2 business days.</p>
+          <form id="support-form" action="https://formspree.io/f/your-endpoint" method="POST">
+            <!-- Replace the action URL with your Formspree endpoint, or switch to mailto: as needed. -->
+            <div class="row">
+              <div>
+                <label for="name">Name</label>
+                <input id="name" name="name" autocomplete="name" required />
+              </div>
+              <div>
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" autocomplete="email" required />
+              </div>
+            </div>
+            <div class="row">
+              <div>
+                <label for="topic">Topic</label>
+                <input id="topic" name="topic" placeholder="Billing, bug, feature, other" />
+              </div>
+              <div>
+                <label for="device">Device</label>
+                <input id="device" name="device" placeholder="iPhone model, iOS version" />
+              </div>
+            </div>
+            <div>
+              <label for="message">Message</label>
+              <textarea id="message" name="message" required placeholder="Describe the issue or question…"></textarea>
+            </div>
+            <input type="hidden" name="_subject" value="Spendly Support Request" />
+            <button class="btn" type="submit">Send message</button>
+            <div class="success" id="form-success">Thanks! We received your message.</div>
+            <div class="error" id="form-error">Something went wrong. Please email <a href="mailto:support@yourdomain.com">support@yourdomain.com</a>.</div>
+            <p class="hint">By contacting us, you agree to the <a href="#/privacy">Privacy Policy</a>.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT (standalone route) -->
+    <section id="page-contact" class="page">
+      <div class="card pad">
+        <h2>Contact Support</h2>
+        <p class="lead">Fill out the form and we’ll get back to you. You can also email <a href="mailto:support@yourdomain.com">support@yourdomain.com</a>.</p>
+        <form id="contact-form" action="https://formspree.io/f/your-endpoint" method="POST">
+          <div class="row">
+            <div>
+              <label for="cname">Name</label>
+              <input id="cname" name="name" required />
+            </div>
+            <div>
+              <label for="cemail">Email</label>
+              <input id="cemail" name="email" type="email" required />
+            </div>
+          </div>
+          <div>
+            <label for="cmessage">Message</label>
+            <textarea id="cmessage" name="message" required></textarea>
+          </div>
+          <button class="btn" type="submit">Send message</button>
+          <div class="success" id="contact-success">Thanks! We received your message.</div>
+          <div class="error" id="contact-error">Something went wrong. Please email <a href="mailto:support@yourdomain.com">support@yourdomain.com</a>.</div>
+        </form>
+      </div>
+    </section>
+
+    <!-- PRIVACY -->
+    <section id="page-privacy" class="page">
+      <article class="card pad prose">
+        <h1>Privacy Policy</h1>
+        <p><em>Last updated: 2025-10-08</em></p>
+        <h2>Overview</h2>
+        <p>Spendly helps you capture and organize receipts. We aim to process data on device whenever possible and minimize data sharing.</p>
+        <h2>Data You Provide</h2>
+        <ul>
+          <li>Receipt images and text you scan</li>
+          <li>Receipt details you edit (merchant, total, tax, date, category)</li>
+          <li>Optional notes and categories</li>
+        </ul>
+        <h2>How We Process Data</h2>
+        <p>By default, extraction runs on device. You may enable cloud processing to improve recognition. When enabled, relevant receipt text and images may be sent securely to our processing service for extraction, then returned to your device.</p>
+        <h2>Storage &amp; Sync</h2>
+        <p>Receipt data and images are stored locally on your device. If you enable iCloud, data may sync across your devices via Apple. In Business mode, data may sync with your company systems per your workspace configuration.</p>
+        <h2>Purchases</h2>
+        <p>Subscriptions and restores are handled by Apple. We may use RevenueCat to securely manage entitlements and localized pricing; RevenueCat receives purchase metadata needed to validate your subscription. We do not receive your full payment details.</p>
+        <h2>Analytics &amp; Tracking</h2>
+        <p>We do not use third‑party advertising trackers. Any diagnostics are used to improve stability and features.</p>
+        <h2>Your Choices</h2>
+        <ul>
+          <li>On‑device only processing toggle</li>
+          <li>Enable/disable iCloud sync</li>
+          <li>Business workspace linking</li>
+          <li>Export or delete your data using the app’s data tools</li>
+        </ul>
+        <h2>Security</h2>
+        <p>We use industry‑standard measures to protect data in transit and at rest. No method is 100% secure.</p>
+        <h2>Children</h2>
+        <p>The app is not directed to children under the age required by local law.</p>
+        <h2>Changes</h2>
+        <p>We may update this policy; material changes will be reflected here. Continued use constitutes acceptance.</p>
+        <h2>Contact</h2>
+        <p>Questions? Contact support at the email listed on the App Store page.</p>
+      </article>
+    </section>
+
+    <!-- TERMS -->
+    <section id="page-terms" class="page">
+      <article class="card pad prose">
+        <h1>Terms of Service</h1>
+        <p><em>Last updated: 2025-10-08</em></p>
+        <h2>Introduction</h2>
+        <p>These Terms govern your use of Spendly. By using the app, you agree to these Terms.</p>
+        <h2>Free Tier &amp; Subscriptions</h2>
+        <p>You may scan up to 10 receipts for free. Continued use requires a paid, auto‑renewing subscription billed through Apple. Subscriptions renew unless canceled at least 24 hours before the end of the current period in your Apple ID settings.</p>
+        <h2>Use of the App</h2>
+        <p>You agree to use the app lawfully and not to infringe any rights. You are responsible for the content you scan and store.</p>
+        <h2>Data Processing &amp; Sync</h2>
+        <p>The app processes receipt images and text on device. You may enable optional cloud processing to improve extraction. You can also enable iCloud sync or connect to a business workspace, which may sync data with company systems.</p>
+        <h2>Intellectual Property</h2>
+        <p>Spendly, including its UI and underlying technology, is owned by its developer. You receive a limited, revocable license to use the app.</p>
+        <h2>Availability &amp; Changes</h2>
+        <p>We may modify, suspend, or discontinue features at any time. We may update these Terms; continued use constitutes acceptance of changes.</p>
+        <h2>Disclaimer &amp; Liability</h2>
+        <p>The app is provided "as is" without warranties. To the maximum extent permitted by law, we are not liable for any indirect or consequential damages.</p>
+        <h2>Contact</h2>
+        <p>For questions, contact support at the email listed on the App Store page.</p>
+        <hr />
+        <p><strong>Jurisdiction / Governing Law:</strong> <em>Add your governing law/jurisdiction here.</em><br>
+        <strong>Company Info:</strong> <em>Legal entity name and registered address.</em></p>
+        <h2>Change Log</h2>
+        <ul>
+          <li>2025-10-08: Initial publication of Spendly terms.</li>
+        </ul>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="links">
+        <a href="#/privacy">Privacy</a>
+        <a href="#/terms">Terms</a>
+        <a href="#/contact">Contact</a>
+        <span>© <span id="year"></span> Spendly</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Tiny hash router for Pages (so you get /#/privacy & /#/terms URLs)
+    const routes = {
+      '/': 'page-home',
+      '/faq': 'page-faq',
+      '/contact': 'page-contact',
+      '/privacy': 'page-privacy',
+      '/terms': 'page-terms',
+    };
+    const setActive = (id) => {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      const el = document.getElementById(id) || document.getElementById('page-home');
+      el.classList.add('active');
+      // nav highlight
+      document.querySelectorAll('[data-nav]').forEach(a => a.classList.remove('active'));
+      const active = [...document.querySelectorAll('[data-nav]')].find(a => a.getAttribute('href') === '#' + location.hash);
+      if (active) active.classList.add('active');
+      window.scrollTo({top:0,behavior:'instant'});
+    };
+    const onRoute = () => {
+      const hash = location.hash.replace('#','') || '/';
+      setActive(routes[hash] || 'page-home');
+    };
+    window.addEventListener('hashchange', onRoute);
+    window.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('year').textContent = new Date().getFullYear();
+      onRoute();
+    });
+
+    // Progressive enhancement: intercept Formspree responses for UX
+    function wireForm(id){
+      const form = document.getElementById(id);
+      if(!form) return;
+      const success = form.parentElement.querySelector('.success');
+      const error = form.parentElement.querySelector('.error');
+      form.addEventListener('submit', async (e)=>{
+        // If action="mailto:" let the browser handle it
+        if(form.action.startsWith('mailto:')) return;
+        e.preventDefault();
+        success && (success.style.display='none');
+        error && (error.style.display='none');
+        try{
+          const res = await fetch(form.action, { method:'POST', body: new FormData(form), headers: { 'Accept':'application/json' } });
+          if(res.ok){
+            form.reset();
+            success && (success.style.display='block');
+          }else{ throw new Error('bad'); }
+        }catch(err){
+          error && (error.style.display='block');
+        }
+      });
+    }
+    wireForm('support-form');
+    wireForm('contact-form');
+  </script>
 </body>
 </html>
