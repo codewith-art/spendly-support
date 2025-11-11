@@ -102,7 +102,7 @@
           <div class="kpis">
             <div class="kpi"><strong>Restore Purchases</strong><br/><span class="muted">Open app → Settings → Restore Purchases</span></div>
             <div class="kpi"><strong>Upgrade to Premium</strong><br/><span class="muted">Open app → Settings → Premium</span></div>
-            <div class="kpi"><strong>Contact</strong><br/><span class="muted"><a href="mailto:support@spandlygo.com">support@spandlygo.com</a></span></div>
+            <div class="kpi"><strong>Contact</strong><br/><span class="muted"><a href="mailto:spendlygo@outlook.com">spendlygo@outlook.com</a></span></div>
           </div>
           <div style="margin-top:16px;display:flex;gap:12px;flex-wrap:wrap">
             <a class="btn" href="#/contact">Contact Support</a>
@@ -152,7 +152,7 @@
           <h2>Contact</h2>
           <p class="lead">We usually reply within 1–2 business days.</p>
           <!-- MAILTO FORM VERSION -->
-          <form id="support-form" data-mailto="support@spandlygo.com">
+          <form id="support-form" data-mailto="spendlygo@outlook.com">
             <div class="row">
               <div>
                 <label for="name">Name</label>
@@ -179,8 +179,8 @@
             </div>
             <button class="btn" type="submit">Send via Email</button>
             <div class="success" id="form-success">Email composer opened. If not, use the email link below.</div>
-            <div class="error" id="form-error">Couldn’t open your email app. Please email <a href="mailto:support@spandlygo.com">support@spandlygo.com</a>.</div>
-            <p class="hint">Or email us directly: <a href="mailto:support@spandlygo.com?subject=SpandlyGo%20Support">support@spandlygo.com</a></p>
+            <div class="error" id="form-error">Couldn’t open your email app. Please email <a href="mailto:spendlygo@outlook.com">spendlygo@outlook.com</a>.</div>
+            <p class="hint">Or email us directly: <a href="mailto:spendlygo@outlook.com?subject=SpandlyGo%20Support">spendlygo@outlook.com</a></p>
           </form>
         </div>
       </div>
@@ -190,8 +190,8 @@
     <section id="page-contact" class="page">
       <div class="card pad">
         <h2>Contact Support</h2>
-        <p class="lead">Fill out the form and we’ll get back to you. You can also email <a href="mailto:support@spandlygo.com">support@spandlygo.com</a>.</p>
-        <form id="contact-form" data-mailto="support@spandlygo.com">
+        <p class="lead">Fill out the form and we’ll get back to you. You can also email <a href="mailto:spendlygo@outlook.com">spendlygo@outlook.com</a>.</p>
+        <form id="contact-form" data-mailto="spendlygo@outlook.com">
           <div class="row">
             <div>
               <label for="cname">Name</label>
@@ -208,7 +208,7 @@
           </div>
           <button class="btn" type="submit">Send via Email</button>
           <div class="success" id="contact-success">Email composer opened. If not, use the email link above.</div>
-          <div class="error" id="contact-error">Couldn’t open your email app. Please email <a href="mailto:support@spandlygo.com">support@spandlygo.com</a>.</div>
+          <div class="error" id="contact-error">Couldn’t open your email app. Please email <a href="mailto:spendlygo@outlook.com">spendlygo@outlook.com</a>.</div>
         </form>
       </div>
     </section>
@@ -313,7 +313,7 @@
     // Mailto form handler: builds an email with subject/body from fields
     function wireMailtoForm(id){
       const form = document.getElementById(id); if(!form) return;
-      const to = form.getAttribute('data-mailto') || 'support@spandlygo.com';
+      const to = form.getAttribute('data-mailto') || 'spendlygo@outlook.com';
       const success = form.querySelector('.success') || form.parentElement.querySelector('.success');
       const error = form.querySelector('.error') || form.parentElement.querySelector('.error');
       form.addEventListener('submit', (e)=>{
